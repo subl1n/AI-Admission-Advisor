@@ -1,8 +1,11 @@
 import json
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, Request
+from fastapi.templating import Jinja2Templates
 from fastapi.responses import FileResponse
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/")
@@ -11,8 +14,18 @@ def home():
 
 
 @app.get("/history")
-def history():
-    return FileResponse("templates/history.html")
+def history(request: Request):
+
+    with open("db.json", "r") as file:
+        database = json.load(file)
+
+    return templates.TemplateResponse(
+    request=request,
+    name="history.html",
+    context={
+        "applications": database
+    }
+)
 
 
 @app.get("/about")

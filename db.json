@@ -12,5 +12,33 @@
         "sat": "1510",
         "portfolio": "IPhO\r\nRSI",
         "universities": "KAIST"
+    },
+    {
+        "gpa": "4.7",
+        "ielts": "8.0",
+        "sat": "1560",
+        "portfolio": "jfjwefjhwefwe",
+        "universities": "Tokyo University"
+    },
+    {
+        "gpa": "5.0",
+        "ielts": "7.0",
+        "sat": "1510",
+        "portfolio": "MAANNANKWODedjkqwedjk",
+        "universities": "Princeton University"
+    },
+    {
+        "gpa": "4.6",
+        "ielts": "9.0",
+        "sat": "1400",
+        "portfolio": "\u043f\u0446\u0443\u043a\u043b\u0430\u043e\r\nISEF",
+        "universities": "University of Toronto"
+    },
+    {
+        "gpa": "4.8",
+        "ielts": "7.5",
+        "sat": "1510",
+        "portfolio": "awefweweq",
+        "universities": "fweqweq"
     }
 ]

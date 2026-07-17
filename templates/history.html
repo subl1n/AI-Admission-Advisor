@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>History</title>
 </head>
 
 <body>
 
-<h1>Analysis History</h1>
+<h1>Application History</h1>
 
-<p>
-Your previous portfolio analyses will appear here.
-</p>
+
+{% for app in applications %}
+
+<hr>
+
+<h2>Application</h2>
+
+<p>GPA: {{ app.gpa }}</p>
+
+<p>IELTS: {{ app.ielts }}</p>
+
+<p>SAT: {{ app.sat }}</p>
+
+<p>Portfolio: {{ app.portfolio }}</p>
+
+<p>Universities: {{ app.universities }}</p>
+
+
+{% endfor %}
+
 
 </body>
+
 </html>
