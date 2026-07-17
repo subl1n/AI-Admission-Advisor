@@ -1,8 +1,9 @@
+from database import save_application, get_applications
 import json
 from fastapi import FastAPI, Form, Request
+from ai import analyze_profile
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import FileResponse
-from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -16,8 +17,7 @@ def home():
 @app.get("/history")
 def history(request: Request):
 
-    with open("db.json", "r") as file:
-        database = json.load(file)
+    database = get_applications()
 
     return templates.TemplateResponse(
     request=request,
@@ -49,14 +49,9 @@ def analyze(
         "universities": universities
     }
 
-    with open("db.json", "r") as file:
-        database = json.load(file)
-
-    database.append(data)
-
-    with open("db.json", "w") as file:
-        json.dump(database, file, indent=4)
+    save_application(data)
+    analysis = analyze_profile(data)
 
     return {
-        "message": "Saved successfully!"
-    }
+    "analysis": analysis
+}
