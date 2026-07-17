@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>AI Admission Advisor</title>
 </head>
 
@@ -8,9 +9,30 @@
 
 <h1>AI Admission Advisor</h1>
 
-<p>
-Analyze your chances of admission using AI.
-</p>
+<p>Analyze your chances of admission using AI.</p>
+
+<form action="/analyze" method="post">
+
+    <label>GPA</label><br>
+    <input type="text" name="gpa"><br><br>
+
+    <label>IELTS</label><br>
+    <input type="text" name="ielts"><br><br>
+
+    <label>SAT</label><br>
+    <input type="text" name="sat"><br><br>
+
+    <label>Portfolio</label><br>
+    <textarea name="portfolio" rows="8" cols="60"></textarea><br><br>
+
+    <label>Target Universities</label><br>
+    <textarea name="universities" rows="5" cols="60"></textarea><br><br>
+
+    <button type="submit">
+        Analyze
+    </button>
+
+</form>
 
 </body>
 </html>
