@@ -33,6 +33,23 @@ def history(request: Request):
 def about():
     return FileResponse("templates/about.html")
 
+@app.get("/application/{id}")
+def application(id: int, request: Request):
+
+    database = get_applications()
+
+    application = database[id]
+
+    application["analysis"] = markdown.markdown(application["analysis"])
+
+    return templates.TemplateResponse(
+        request=request,
+        name="application.html",
+        context={
+            "application": application
+        }
+    )
+
 
 @app.post("/analyze")
 def analyze(
@@ -51,18 +68,19 @@ def analyze(
         "universities": universities
     }
 
-    save_application(data)
     analysis = analyze_profile(data)
+    
+    data["analysis"] = analysis
+    
+    save_application(data)
 
-analysis_html = markdown.markdown(
-    analysis
-)
+    analysis_html = markdown.markdown(analysis)
 
     return templates.TemplateResponse(
-    request=request,
-    name="result.html",
-    context={
-        "request": request,
-        "analysis": analysis_html
-    }
-)
+        request=request,
+        name="result.html",
+        context={
+            "request": request,
+            "analysis": analysis_html
+        }
+    )
